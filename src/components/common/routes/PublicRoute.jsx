@@ -9,7 +9,11 @@ import useAuth from '../../../hooks/useAuth';
 function PublicRoute({ children }) {
   const isAuthChecked = useAuth();
 
-  return !isAuthChecked ? children : <Navigate to={EMPLOYEES_PATH} replace={true} />;
+  return !isAuthChecked ? (
+    children
+  ) : (
+    <Navigate to={EMPLOYEES_PATH} replace={true} />
+  );
 }
 
 PublicRoute.propTypes = {

@@ -16,12 +16,12 @@ function PrivateRoute({ children }) {
     return (
       <>
         <Navbar />
-        <Box h="100vh" display="flex" overflow="hidden">
-          <Show above="md"></Show>
-          <Box w="full" pt={4} px={0} overflowY="auto" bg="#FFFFFF">
-            <Wrapper>{children}</Wrapper>
+          <Box h="100vh" display="flex" overflow="hidden">
+            <Show above="md"></Show>
+            <Box w="full" pt={4} px={0} overflowY="auto" bg="#FFFFFF">
+              <Wrapper>{children}</Wrapper>
+            </Box>
           </Box>
-        </Box>
         <Hide above="md"></Hide>
       </>
     );

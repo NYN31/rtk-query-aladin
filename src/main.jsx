@@ -12,17 +12,14 @@ import { store } from './app/store.js';
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
-console.log(import.meta.env.VITE_GOOGLE_CLIENT_ID);
-
 root.render(
   <React.StrictMode>
-    <GoogleOAuthProvider
-      clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
-    >
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
       <Provider store={store}>
         <BrowserRouter>
           <ChakraProvider>
             <App />
+            {/* <App /> */}
           </ChakraProvider>
         </BrowserRouter>
       </Provider>

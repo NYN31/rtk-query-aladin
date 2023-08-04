@@ -13,6 +13,7 @@ import { EMPLOYEES_LIST_CONTAINER_BREADCRUMB } from '../../constants/breadcrumbC
 import { EMPLOYEE_LIST_PAGE } from '../../constants/commonConstants';
 import { useGetEmployeesQuery } from '../../features/employees/employeesApi';
 import { setEmployees } from '../../features/employees/employeesSlice';
+import DataSpinner from '../../components/common/loader/DataSpinner';
 
 const EmployeesList = () => {
   const navigate = useNavigate();
@@ -40,7 +41,8 @@ const EmployeesList = () => {
     setPage(pageNumber);
   }
 
-  if (employeesResultLoading) return null;
+  if(employeesResultLoading) return <DataSpinner />;
+
   if (employeesResponseError) {
     console.log(employeesResponseError);
     return null;

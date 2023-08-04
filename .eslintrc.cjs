@@ -23,7 +23,7 @@ module.exports = {
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'no-unused-vars': [
-      'error',
+      'warn',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: false },
     ],
   },

@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-
 import { Box, Circle, Flex, Text, useToast } from '@chakra-ui/react';
 import { GoogleLogin } from '@react-oauth/google';
 
-
-
 import { EMPLOYEES_PATH } from '../../../constants/pathnameConstant';
 import { useLoginMutation } from '../../../features/auth/authApi';
-
+import DataSpinner from '../../common/loader/DataSpinner';
 
 const GoogleLoginComponent = () => {
   const navigate = useNavigate();
@@ -22,17 +18,18 @@ const GoogleLoginComponent = () => {
     }
 
     if (data?.token) {
-      console.log(data.token);
       navigate(EMPLOYEES_PATH);
     }
   }, [data, responseError, navigate]);
+
+  if (isLoading) return <DataSpinner />;
 
   const onSuccessHandler = credentialResponse => {
     login({ token: credentialResponse.credential });
   };
 
   const onErrorHanlder = () => {
-    console.log('Login Failed');
+    // handle error message here
     navigate('/');
   };
 
