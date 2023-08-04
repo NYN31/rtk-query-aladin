@@ -21,7 +21,7 @@ export default function useAuthCheck() {
         );
       }
     }
-    setAuthChecked(true);
+    //setAuthChecked(true);
   }, [dispatch, setAuthChecked]);
 
   return authChecked;

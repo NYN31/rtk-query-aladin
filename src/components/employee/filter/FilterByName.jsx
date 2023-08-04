@@ -52,7 +52,6 @@ const FilterByName = ({ page, setPageNo, searchName, setSearchName }) => {
 
   if (filteredEmployeesLoading) return null;
   if (filteredEmployeesResponseError) {
-    console.log(filteredEmployeesResponseError);
     return null;
   }
 

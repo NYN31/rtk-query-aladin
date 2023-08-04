@@ -2,22 +2,17 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { useToast } from '@chakra-ui/react';
+import { toastMessageObject } from '../../../helper/toast-message-object';
 
 const CommonToastMessageWrapper = ({ children }) => {
   const toast = useToast();
-  const commonState = useSelector(state => state.common);
-  const { title, message: description, status, duration  } = commonState;
+  const common = useSelector(state => state.common);
+  const { title, description, status, duration } = common;
 
   return (
     <>
       {children}
-      {toast({
-        title,
-        description,
-        status,
-        duration,
-        isClosable: true,
-      })}
+      {toast(toastMessageObject(title, description, status, duration))}
     </>
   );
 };

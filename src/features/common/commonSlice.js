@@ -2,25 +2,22 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   title: '',
-  message: '',
+  description: '',
   status: '',
-  loading: false,
+  duration: 5000,
 };
 
 const commonSlice = createSlice({
   name: 'common',
   initialState,
   reducers: {
-    setMessage: (state, action) => {
+    setResponseMessage: (state, action) => {
       state.title = action.payload.title;
-      state.message = action.payload.message;
-      state.type = action.payload.type;
+      state.description = action.payload.description;
+      state.status = action.payload.status;
     },
-    setLoading: (state, action) => {
-      state.loading = action.payload;
-    }
   },
 });
 
-export const { setMessage, setLoading } = commonSlice.actions;
+export const { setResponseMessage, setLoading } = commonSlice.actions;
 export default commonSlice.reducer;

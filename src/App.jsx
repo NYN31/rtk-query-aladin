@@ -5,7 +5,7 @@ import PublicRoute from './components/common/routes/PublicRoute';
 import * as pathname from './constants/pathnameConstant';
 import useAuthCheck from './hooks/useAuthCheck';
 import AuthContainer from './pages/auth/AuthContainer';
-import EmployeesList from './pages/employee/EmployeesList.jsx';
+import EmployeesListContainer from './pages/employee/EmployeesListContainer.jsx';
 
 function App() {
   const isAuthChecked = useAuthCheck();
@@ -34,7 +34,7 @@ function App() {
         path={pathname.EMPLOYEES_PATH}
         element={
           <PrivateRoute>
-            <EmployeesList />
+            <EmployeesListContainer />
           </PrivateRoute>
         }
       />

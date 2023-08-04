@@ -14,6 +14,7 @@ import { EMPLOYEE_LIST_PAGE } from '../../constants/commonConstants';
 import { useGetEmployeesQuery } from '../../features/employees/employeesApi';
 import { setEmployees } from '../../features/employees/employeesSlice';
 import DataSpinner from '../../components/common/loader/DataSpinner';
+import { setResponseMessage } from '../../features/common/commonSlice';
 
 const EmployeesList = () => {
   const navigate = useNavigate();

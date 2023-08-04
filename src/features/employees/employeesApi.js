@@ -15,7 +15,6 @@ export const employeesApi = apiSlice.injectEndpoints({
 
     getEmployeesByName: builder.query({
       query: ({ name, page, size }) => {
-        console.log(name, page, size);
         const params = getUrlSearchParams({ name, page, size });
         return `${EMPLOYEE_SEARCH_PATH}/search?${params}`;
       },

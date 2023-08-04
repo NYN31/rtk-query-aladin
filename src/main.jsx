@@ -8,6 +8,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import App from './App.jsx';
 import { store } from './app/store.js';
+import CommonToastMessageWrapper from './components/common/wrapper/CommonToastMessageWrapper.jsx';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -18,7 +19,9 @@ root.render(
       <Provider store={store}>
         <BrowserRouter>
           <ChakraProvider>
-            <App />
+            <CommonToastMessageWrapper>
+              <App />
+            </CommonToastMessageWrapper>
             {/* <App /> */}
           </ChakraProvider>
         </BrowserRouter>

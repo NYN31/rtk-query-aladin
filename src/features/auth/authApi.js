@@ -2,6 +2,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 import { apiSlice } from '../api/apiSlice';
 import { userLoggedIn } from './authSlice';
+import { useToast } from '@chakra-ui/react';
+import { setResponseMessage } from '../common/commonSlice';
 
 export const authApi = apiSlice.injectEndpoints({
   endpoints: builder => ({
@@ -30,10 +32,7 @@ export const authApi = apiSlice.injectEndpoints({
               role: result.data.role,
             })
           );
-        } catch (err) {
-          // navigate to login page
-          window.location.href = '/';
-        }
+        } catch (err) {}
       },
     }),
   }),
