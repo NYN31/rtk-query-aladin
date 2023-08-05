@@ -6,7 +6,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:jsx-ally/recommended',
     'plugin:import/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
@@ -16,12 +15,8 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react'],
   rules: {
-    'react-refresh/only-export-components': 'error',
+    'import/no-unresolved': 'off',
     'no-undef': 'error',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error',
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error',
     'no-unused-vars': [
       'warn',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: false },

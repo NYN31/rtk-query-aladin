@@ -1,13 +1,13 @@
-import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { Box, Show, Hide } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { PropTypes } from 'prop-types';
 
 import { LOGIN_PATH } from '../../../constants/pathnameConstant';
 import useAuth from '../../../hooks/useAuth';
-import Navbar from '../navbar/Navbar';
 import Wrapper from '../wrapper/Wrapper.jsx';
+import Navbar from '../bar/Navbar';
+import SideBar from '../bar/Sidebar';
 
 function PrivateRoute({ children }) {
   const isAuthChecked = useAuth();
@@ -16,13 +16,12 @@ function PrivateRoute({ children }) {
     return (
       <>
         <Navbar />
-          <Box h="100vh" display="flex" overflow="hidden">
-            <Show above="md"></Show>
-            <Box w="full" pt={4} px={0} overflowY="auto" bg="#FFFFFF">
-              <Wrapper>{children}</Wrapper>
-            </Box>
+        <Box h="100vh" overflow="hidden">
+          <SideBar />
+          <Box w="full" pt={4} overflowY="auto" bg="#FFFFFF" pl="250px">
+            <Wrapper>{children}</Wrapper>
           </Box>
-        <Hide above="md"></Hide>
+        </Box>
       </>
     );
   }
