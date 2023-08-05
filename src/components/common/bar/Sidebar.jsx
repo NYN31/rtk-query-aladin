@@ -1,5 +1,20 @@
 import { IconContext } from 'react-icons';
-import { Flex, List, ListItem, Stack, Box } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Flex,
+  List,
+  ListItem,
+  Spacer,
+  Stack,
+} from '@chakra-ui/react';
+
 import { SIDEBAR_DATA } from '../../../constants/sidebarConstants';
 
 const sideBarListCssProperty = {
@@ -17,11 +32,8 @@ const sideBarListCssProperty = {
   },
 };
 
-function SideBar() {
-  function handleNavigation(path) {
-    //history.push(path);
-    console.log(path);
-  }
+const SideBar = () => {
+  const navigate = useNavigate();
 
   const getListItem = (path, icon, title, label) => {
     const isPathnameEqualLabel =
@@ -34,7 +46,7 @@ function SideBar() {
         {...sideBarListCssProperty}
         bg={bgClr}
         color={txtClr}
-        onClick={() => handleNavigation(path)}
+        onClick={() => navigate(path)}
       >
         <Stack align="left" direction="row">
           <Flex w="24px">{icon}</Flex>
@@ -64,37 +76,33 @@ function SideBar() {
       <IconContext.Provider value={{ color: '#000' }}>
         <List mx="4px">
           {SIDEBAR_DATA.map((item, index) => {
-            /*
-                        if (item.hasAccordion) {
-                            return (
-                                <Accordion key={index} allowToggle={true}>
-                                    <AccordionItem border="0px">
-                                        <AccordionButton>
-                                            <Box color="#fff">{item.title}</Box>
-                                            <Spacer />
-                                            <AccordionIcon color="#fff" />
-                                        </AccordionButton>
-                                        <AccordionPanel pt={0} pb={0}>
-                                            {item.hasAccordion.map(
-                                                (accordion, idx) => {
-                                                    return (
-                                                        <Box key={idx}>
-                                                            {getListItem(
-                                                                accordion.path,
-                                                                accordion.icon,
-                                                                accordion.title,
-                                                                accordion.label
-                                                            )}
-                                                        </Box>
-                                                    );
-                                                }
-                                            )}
-                                        </AccordionPanel>
-                                    </AccordionItem>
-                                </Accordion>
-                            );
-                        }
-                        */
+            if (item.hasAccordion) {
+              return (
+                <Accordion key={index} allowToggle={true}>
+                  <AccordionItem border="0px">
+                    <AccordionButton>
+                      <Box color="#000000">{item.title}</Box>
+                      <Spacer />
+                      <AccordionIcon color="#000000" />
+                    </AccordionButton>
+                    <AccordionPanel pt={0} pb={0}>
+                      {item.hasAccordion.map((accordion, idx) => {
+                        return (
+                          <Box key={idx}>
+                            {getListItem(
+                              accordion.path,
+                              accordion.icon,
+                              accordion.title,
+                              accordion.label
+                            )}
+                          </Box>
+                        );
+                      })}
+                    </AccordionPanel>
+                  </AccordionItem>
+                </Accordion>
+              );
+            }
 
             return (
               <Box key={index}>
@@ -106,6 +114,6 @@ function SideBar() {
       </IconContext.Provider>
     </Flex>
   );
-}
+};
 
 export default SideBar;

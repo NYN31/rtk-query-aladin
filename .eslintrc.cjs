@@ -13,13 +13,19 @@ module.exports = {
   ],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react'],
+  plugins: ['react', 'simple-import-sort'],
   rules: {
     'import/no-unresolved': 'off',
     'no-undef': 'error',
     'no-unused-vars': [
       'warn',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: false },
+    ],
+    'simple-import-sort/imports': [
+      'warn',
+      {
+        groups: [['^react'], ['^antd'], ['^@?\\w'], ['@/(.*)'], ['^[./]']],
+      },
     ],
   },
 };

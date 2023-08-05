@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { Flex, Spacer } from '@chakra-ui/react';
 
 import BreadCrumb from '../../components/common/breadcrumb/BreadCrumb';
+import DataSpinner from '../../components/common/loader/DataSpinner';
 import PageTitle from '../../components/common/pageTitle/PageTitle';
 import CommonPagination from '../../components/common/pagination/CommonPagination';
 import FilterByName from '../../components/employee/filter/FilterByName';
@@ -13,27 +13,28 @@ import { EMPLOYEES_LIST_CONTAINER_BREADCRUMB } from '../../constants/breadcrumbC
 import { EMPLOYEE_LIST_PAGE } from '../../constants/commonConstants';
 import { useGetEmployeesQuery } from '../../features/employees/employeesApi';
 import { setEmployees } from '../../features/employees/employeesSlice';
-import DataSpinner from '../../components/common/loader/DataSpinner';
-import { setResponseMessage } from '../../features/common/commonSlice';
 
 const EmployeesList = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [page, setPage] = useState(0);
-  const [searchName, setSearchName] = useState('');
   const employees = useSelector(state => state.employees);
 
   const {
     data: employeesResult,
     isLoading: employeesResultLoading,
     error: employeesResponseError,
-  } = useGetEmployeesQuery({ page, size: 10 });
+  } = useGetEmployeesQuery(
+    { page, size: 10 },
+    {
+      skip: employees.filterEnable,
+    }
+  );
 
   useEffect(() => {
     dispatch(setEmployees(employeesResult));
-  }, []);
+  }, [dispatch, employeesResult]);
 
-  let results = {};
+  let results = { content: [] };
   if (employees.filterEnable)
     results = employees.filteredEmployees || { content: [] };
   else results = employees.employees || { content: [] };
@@ -42,7 +43,7 @@ const EmployeesList = () => {
     setPage(pageNumber);
   }
 
-  if(employeesResultLoading) return <DataSpinner />;
+  if (employeesResultLoading) return <DataSpinner />;
 
   if (employeesResponseError) {
     console.log(employeesResponseError);
@@ -58,12 +59,7 @@ const EmployeesList = () => {
       <Flex direction="row">
         <PageTitle title={EMPLOYEE_LIST_PAGE} />
         <Spacer />
-        <FilterByName
-          page={page}
-          setPageNumber={setPageNumber}
-          searchName={searchName}
-          setSearchName={setSearchName}
-        />
+        <FilterByName page={page} />
       </Flex>
 
       <EmployeesTable results={results} />

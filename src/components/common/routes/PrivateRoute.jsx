@@ -5,9 +5,9 @@ import { PropTypes } from 'prop-types';
 
 import { LOGIN_PATH } from '../../../constants/pathnameConstant';
 import useAuth from '../../../hooks/useAuth';
-import Wrapper from '../wrapper/Wrapper.jsx';
 import Navbar from '../bar/Navbar';
 import SideBar from '../bar/Sidebar';
+import Wrapper from '../wrapper/Wrapper.jsx';
 
 function PrivateRoute({ children }) {
   const isAuthChecked = useAuth();

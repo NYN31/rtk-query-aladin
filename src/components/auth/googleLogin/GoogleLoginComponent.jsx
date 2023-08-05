@@ -1,9 +1,8 @@
-import React from 'react';
-
 import { Box, Circle, Flex, Text } from '@chakra-ui/react';
 import { GoogleLogin } from '@react-oauth/google';
+import PropTypes from 'prop-types';
 
-const GoogleLoginComponent = ({ onSuccessHandler, onErrorHanlder }) => {
+const GoogleLoginComponent = ({ onSuccessHandler, onErrorHandler }) => {
   return (
     <Flex
       bgColor="#0077C0"
@@ -39,13 +38,18 @@ const GoogleLoginComponent = ({ onSuccessHandler, onErrorHanlder }) => {
           >
             <GoogleLogin
               onSuccess={onSuccessHandler}
-              onError={onErrorHanlder}
+              onError={onErrorHandler}
             />
           </Flex>
         </Box>
       </Box>
     </Flex>
   );
+};
+
+GoogleLoginComponent.propTypes = {
+  onSuccessHandler: PropTypes.func.isRequired,
+  onErrorHandler: PropTypes.func.isRequired,
 };
 
 export default GoogleLoginComponent;

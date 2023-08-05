@@ -11,18 +11,18 @@ export const days = () => {
 };
 
 export const months = [
-  { key: '01', value: 'January', bdValue: 'জানুয়ারি' },
-  { key: '02', value: 'February', bdValue: 'ফেব্রুয়ারী' },
-  { key: '03', value: 'March', bdValue: 'মার্চ' },
-  { key: '04', value: 'April', bdValue: 'এপ্রিল' },
-  { key: '05', value: 'May', bdValue: 'মে' },
-  { key: '06', value: 'June', bdValue: 'জুন' },
-  { key: '07', value: 'July', bdValue: 'জুলাই' },
-  { key: '08', value: 'August', bdValue: 'আগষ্ট' },
-  { key: '09', value: 'September', bdValue: 'সেপ্টেম্বর' },
-  { key: '10', value: 'October', bdValue: 'অক্টোবর' },
-  { key: '11', value: 'November', bdValue: 'নভেম্বর' },
-  { key: '12', value: 'December', bdValue: 'ডিসেম্বর' },
+  { key: '01', enValue: 'January', bdValue: 'জানুয়ারি' },
+  { key: '02', enValue: 'February', bdValue: 'ফেব্রুয়ারী' },
+  { key: '03', enValue: 'March', bdValue: 'মার্চ' },
+  { key: '04', enValue: 'April', bdValue: 'এপ্রিল' },
+  { key: '05', enValue: 'May', bdValue: 'মে' },
+  { key: '06', enValue: 'June', bdValue: 'জুন' },
+  { key: '07', enValue: 'July', bdValue: 'জুলাই' },
+  { key: '08', enValue: 'August', bdValue: 'আগষ্ট' },
+  { key: '09', enValue: 'September', bdValue: 'সেপ্টেম্বর' },
+  { key: '10', enValue: 'October', bdValue: 'অক্টোবর' },
+  { key: '11', enValue: 'November', bdValue: 'নভেম্বর' },
+  { key: '12', enValue: 'December', bdValue: 'ডিসেম্বর' },
 ];
 
 export const years = () => {
@@ -43,7 +43,7 @@ export const getHumanReadableDate = (date, isShortFormMonth = true) => {
   const [year, month, day] = date.split('-');
 
   let newDay = Number(day);
-  let newMonth = months.find(m => Number(m.key) === Number(month)).value;
+  let newMonth = months.find(m => Number(m.key) === Number(month)).enValue;
   let newYear = year;
   if (isShortFormMonth) newMonth = newMonth.slice(0, 3);
   return `${newMonth} ${newDay}, ${newYear}`;
@@ -86,7 +86,7 @@ export const getShortFormDate = (date, dayFirst = false) => {
   let [, month, day] = date.split('-');
   let monthFirstThreeLetter = months
     .find(m => Number(m.key) === Number(month))
-    .value.slice(0, 3);
+    .enValue.slice(0, 3);
 
   if (dayFirst)
     return `${String(day).padStart(2, '0')} ${monthFirstThreeLetter}`;

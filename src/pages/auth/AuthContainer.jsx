@@ -1,18 +1,16 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Box, useToast } from '@chakra-ui/react';
 
 import GoogleLoginComponent from '../../components/auth/googleLogin/GoogleLoginComponent';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useLoginMutation } from '../../features/auth/authApi';
 import DataSpinner from '../../components/common/loader/DataSpinner';
-import { EMPLOYEES_PATH, _ROOT } from '../../constants/pathnameConstant';
+import { _ROOT, EMPLOYEES_PATH } from '../../constants/pathnameConstant';
+import { useLoginMutation } from '../../features/auth/authApi';
 import { toastMessageObject } from '../../helper/toast-message-object';
 
 const EmployeesListContainer = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const toast = useToast();
   const [login, { data, isLoading, error: responseError }] = useLoginMutation();
 
@@ -43,17 +41,11 @@ const EmployeesListContainer = () => {
     }
 
     if (data?.token) {
-      toast(
-        toastMessageObject(
-          'Login Successful',
-          data?.message,
-          'success'
-        )
-      );
+      toast(toastMessageObject('Login Successful', data?.message, 'success'));
 
       navigate(EMPLOYEES_PATH);
     }
-  }, [data, responseError, navigate]);
+  }, [data, responseError, navigate, toast]);
 
   const onSuccessHandler = credentialResponse => {
     login({ token: credentialResponse.credential });

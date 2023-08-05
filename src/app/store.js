@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { apiSlice } from '../features/api/apiSlice';
-import commonSliceReducer from '../features/common/commonSlice';
 import authSliceReducer from '../features/auth/authSlice';
+import commonSliceReducer from '../features/common/commonSlice';
 import employeesSliceReducer from '../features/employees/employeesSlice';
+import partnerSliceReducer from '../features/partner/partnerSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,8 +12,9 @@ export const store = configureStore({
     common: commonSliceReducer,
     auth: authSliceReducer,
     employees: employeesSliceReducer,
+    partner: partnerSliceReducer,
   },
-  //devTools: process.env.NODE_ENV !== 'production',
+  devTools: import.meta.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddlewares =>
     getDefaultMiddlewares().concat(apiSlice.middleware),
 });

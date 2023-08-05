@@ -1,7 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import { Td, Text, Tooltip, Tr } from '@chakra-ui/react';
+import { Td, Text, Tr } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 import { EMPLOYEES_TABLE_FIELD_PADDING } from '../../../../constants/commonConstants.js';
 import {
@@ -20,8 +18,6 @@ const DESIGNATION_WIDTH = ['240px', '250px'];
 const STATUS_WIDTH = '110px';
 
 const EmployeesTableRows = ({ result, index }) => {
-  const navigate = useNavigate();
-
   return (
     <Tr
       key={result.employeeId}
@@ -89,6 +85,11 @@ const EmployeesTableRows = ({ result, index }) => {
       </Td>
     </Tr>
   );
+};
+
+EmployeesTableRows.propTypes = {
+  result: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default EmployeesTableRows;

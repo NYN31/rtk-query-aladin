@@ -1,6 +1,5 @@
-import React from 'react';
-
-import { Box, Text } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 const Wrapper = ({ children }) => {
   return (
@@ -8,6 +7,10 @@ const Wrapper = ({ children }) => {
       {children}
     </Box>
   );
+};
+
+Wrapper.propTypes = {
+  children: PropTypes.object.isRequired,
 };
 
 export default Wrapper;

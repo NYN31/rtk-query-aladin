@@ -4,6 +4,15 @@ const initialState = {
   employees: { content: [] },
   filteredEmployees: { content: [] },
   filterEnable: false,
+  designations: [],
+  employeesStatus: [
+    'STAGE1',
+    'STAGE2',
+    'CONSULTANT',
+    'CONTRACTUAL',
+    'PERMANENT',
+    'TERMINATED',
+  ],
 };
 
 const employeesSlice = createSlice({
@@ -21,9 +30,16 @@ const employeesSlice = createSlice({
     setFilterEnable: (state, action) => {
       state.filterEnable = action.payload;
     },
+    setDesignations: (state, action) => {
+      state.designations = action.payload;
+    },
   },
 });
 
-export const { setEmployees, setFilteredEmployees, setFilterEnable } =
-  employeesSlice.actions;
+export const {
+  setEmployees,
+  setFilteredEmployees,
+  setFilterEnable,
+  setDesignations,
+} = employeesSlice.actions;
 export default employeesSlice.reducer;

@@ -1,10 +1,23 @@
 import * as IoIcons from 'react-icons/io';
+
+import * as pathname from './pathnameConstant';
 export const SIDEBAR_DATA = [
   {
     title: 'Employee Management',
-    label: '/employees',
-    path: '/employees',
-    icon: <IoIcons.IoIosAnalytics size={32} />,
+    hasAccordion: [
+      {
+        title: 'Employee List',
+        label: pathname.EMPLOYEES_PATH,
+        path: pathname.EMPLOYEES_PATH,
+        icon: <IoIcons.IoIosAnalytics size={32} />,
+      },
+      {
+        title: 'Add Employee',
+        label: pathname.ADD_EMPLOYEE_PATH,
+        path: pathname.ADD_EMPLOYEE_PATH,
+        icon: <IoIcons.IoIosAnalytics size={32} />,
+      },
+    ],
   },
   {
     title: 'Team Management',

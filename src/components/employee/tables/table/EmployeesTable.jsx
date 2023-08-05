@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { Box, Flex, Table, Tbody } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 import { EMPLOYEES_TABLE_HEADINGS } from '../../../../constants/employeesConstants.js';
 import EmployeesTableHeading from '../../../common/heading/CommonTableHeading.jsx';
@@ -29,6 +28,10 @@ const EmployeesTable = ({ results }) => {
       </Box>
     </Flex>
   );
+};
+
+EmployeesTable.propTypes = {
+  results: PropTypes.object.isRequired,
 };
 
 export default EmployeesTable;

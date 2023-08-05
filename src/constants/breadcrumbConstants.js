@@ -15,6 +15,12 @@ export const EMPLOYEES_LIST_CONTAINER_BREADCRUMB = [
   'Employee Management',
 ];
 
+export const ADD_EMPLOYEE_CONTAINER_BREADCRUMB = [
+  'Home',
+  'Employee Management',
+  'Add Employee',
+];
+
 export const LEAVE_LIST_CONTAINER_BREADCRUMB = [
   'Home',
   'Reports',

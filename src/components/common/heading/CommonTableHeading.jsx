@@ -1,6 +1,5 @@
-import React from 'react';
-
-import { Thead, Tr, Th } from '@chakra-ui/react';
+import { Th, Thead, Tr } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 import { EMPLOYEES_TABLE_FIELD_PADDING } from '../../../constants/commonConstants';
 
@@ -25,6 +24,10 @@ const CommonTableHeading = ({ tableHeadings }) => {
       </Tr>
     </Thead>
   );
+};
+
+CommonTableHeading.propTypes = {
+  tableHeadings: PropTypes.array.isRequired,
 };
 
 export default CommonTableHeading;
