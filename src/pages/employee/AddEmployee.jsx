@@ -29,7 +29,6 @@ import SearchableSelect from '../../components/common/form/SearchableSelect';
 import DataSpinner from '../../components/common/loader/DataSpinner';
 import PageTitle from '../../components/common/pageTitle/PageTitle';
 import { ADD_EMPLOYEE_CONTAINER_BREADCRUMB } from '../../constants/breadcrumbConstants';
-import { DEBOUNCE_DELAY } from '../../constants/commonConstants';
 import { EMPLOYEES_PATH } from '../../constants/pathnameConstant';
 import {
   employeesApi,
@@ -115,7 +114,7 @@ const AddEmployee = () => {
       });
   };
 
-  const supervisorSearchHandler = debounceHandler(doSearch, DEBOUNCE_DELAY);
+  const supervisorSearchHandler = debounceHandler(doSearch);
 
   const handleSupervisorSearch = e => {
     console.log(e.target.value);
